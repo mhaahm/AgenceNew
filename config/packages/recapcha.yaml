@@ -1,0 +1,10 @@
+#services:
+#    recaptcha.type:
+#        class: MHA\RecaptchaBundle\Type\RecapchaSubmitType
+#        tags: ['form.type']
+#        arguments:
+#            $key: 1111111144qsqsdqsds
+#            $secret: 1111111144qsqsdqsds
+recapcha:
+    key: 1111111144qsqsdqsds
+    secret: 14578qsd8qsdqd

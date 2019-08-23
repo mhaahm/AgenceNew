@@ -1,0 +1,20 @@
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{{ path('property.show',{id:propertie.id,slug:propertie.slug}) }}">{{ propertie.title }}</a>
+        </div>
+        <div class="panel-body">
+            {% if propertie.filename %}
+                <img src="{{ vich_uploader_asset(propertie,'imageFile') }}" style="width: 70%;height: 50px;">
+            {% else %}
+                
+                <img src="images/properties/empty.jpg" style="width: 70%;height: 50px;">
+            {% endif %}
+            <p>{{ propertie.description }}</p>
+            <p class="card-text">{{ propertie.city }} ({{ propertie.postalCode }})</p>
+        </div>
+        <div class="panel-footer">
+            <b> {{ propertie.formatedPrice }} </b><p class="fa fa-euro"></p>
+        </div>
+    </div>
+</div>

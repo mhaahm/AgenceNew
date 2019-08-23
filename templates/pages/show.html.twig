@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ property.title }}
+{% endblock %}
+
+{% block body %}
+    <style>
+        .map {
+            margin-top: 15px;
+            margin-right: 15px;
+        }
+        #mapid { height: 280px; }
+    </style>
+    <div class="col-lg-12">
+        <h1 class="page-header">{{ property.title }}</h1>
+    </div>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-8">
+              <div class="row">
+                  {% if property.filename %}
+                      <img src="{{ vich_uploader_asset(property,'imageFile') }}" style="width: 70%;height: 50px;">
+                  {% else %}
+
+                      <img src="../../images/properties/empty.jpg" style="width: 80%;">
+                  {% endif %}
+              </div>
+
+              <div class="row map">
+                  <div id="mapid"></div>
+              </div>
+          </div>
+
+          <div class="col-sm-4">
+              <div>
+                  {% for message in app.flashes('success') %}
+                      <div class="alert alert-success">
+                          {{ message }}
+                      </div>
+                  {% endfor %}
+              </div>
+              <h4>{{ property.rooms }} pièces {{ property.surface }} m²</h4>
+              <h2 style="color: blue;font-size: 24px;font-weight: bold;">{{ property.formatedPrice }} <p class="fa fa-euro"></p></h2>
+              <div class="row">
+                  <div class="col-md-6">
+                      <button class="btn btn-success" id="contacterAgence">Contacter l'agence</button>
+                  </div>
+              </div>
+              <div id="contact_div" class="mt-4" style="display: none;">
+                    {{ form_start(form) }}
+                  <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.firstname) }}
+                    </div>
+                    <div class="col-md-6">
+                      {{ form_row(form.lastname) }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      {{ form_row(form.email) }}
+                    </div>
+                      <div class="col-md-6">
+                          {{ form_row(form.phone) }}
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          {{ form_rest(form) }}
+                      </div>
+
+                      <div class="col-md-6" style="margin-top: 44px;">
+                          <button class="btn btn-success">envoyer</button>
+                      </div>
+                  </div>
+                  {{ form_end(form) }}
+              </div>
+          </div>
+          <div class="col-sm-8">
+          <p>
+              {{ property.description | nl2br }}
+          </p>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-8">
+              
+            <table class="table table-striped">
+                <tr>
+                    <td>Surface Habitable</td>
+                    <td>{{ property.surface }} m²</td>
+                </tr>
+                <tr>
+                    <td>Pièces</td>
+                    <td>{{ property.rooms }}</td>
+                </tr>
+                <tr>
+                    <td>Chambres</td>
+                    <td>{{ property.bedrooms }}</td>
+                </tr>
+
+                <tr>
+                    <td>Etage</td>
+                    <td>{{ property.floor }}</td>
+                </tr>
+
+                <tr>
+                    <td>Chauffage</td>
+                    <td>{{ property.floor }}</td>
+                </tr>
+
+            </table>
+          </div>
+
+
+
+      </div>
+
+  </div>
+    <script>
+
+    </script>
+
+{% endblock %}

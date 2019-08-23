@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Administration des biens{% endblock %}
+
+{% block body %}
+
+    <br>
+
+    <div class="col-md-11">
+        <h1 class="page-header">Liste des biens</h1>
+    </div>
+
+    <div class="col-md-11">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-12">
+
+            <div class="row flex">
+                <div>
+                    <a href="{{ path('admin.property.new') }}" class="btn btn-primary">Ajouter un bien</a>
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>Titre du bien </th>
+                        <th>Description du bien</th>
+                        <th>Action</th>
+                    </tr>
+                {% for propertie in propertys %}
+                    <tr>
+                        <td>{{ propertie.title }}</td>
+                        <td>{{ propertie.description }}</td>
+                        <td style="width: 18%;">
+                            <a href="{{ path('admin.property.edit',{id:propertie.id}) }}" class="btn btn-success">Edit</a>
+                            <form action="{{ path("admin.property.delete",{id:propertie.id}) }}" style="display: inline-block;" method="post"
+                                  onsubmit="return confirm('Etes vous sur de voiloir supprimer?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ propertie.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+    </div>
+{% endblock %}

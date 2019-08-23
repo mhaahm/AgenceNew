@@ -1,0 +1,12 @@
+services:
+    recaptcha.type:
+        class: MHA\RecaptchaBundle\Type\RecapchaSubmitType
+        tags: ['form.type']
+        arguments:
+            $key: '%recapcha.key%'
+            $secret: '%recapcha.secret%'
+
+    recapcha.validator:
+        class: MHA\RecaptchaBundle\Contraints\RecapchaValidator
+        tags: ['validator.constraint_validator']
+        autowire: true

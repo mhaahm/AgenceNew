@@ -1,0 +1,31 @@
+<div>
+    <h2>Demande de contact pour le bien {{ contact.property.title}}</h2>
+    <section>Une nouvelle personne souhaite obtenir plus d'information a propos du bien
+    <a href="{{ path('property.show',{id:contact.property.id,slug:contact.property.slug}) }}"></a>
+    </section>
+
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td><b>Nom du bien</b></td>
+            <td>{{ contact.property.title }}</td>
+        </tr>
+        <tr>
+            <td><b>Nom</b></td>
+            <td>{{ contact.lastname }}</td>
+        </tr>
+        <tr>
+            <td><b>Prénom</b></td>
+            <td>{{ contact.firstname }}</td>
+        </tr>
+
+        <tr>
+            <td><b>Téléphone</b></td>
+            <td>{{ contact.phone }}</td>
+        </tr>
+
+        <tr>
+            <td><b>Message</b></td>
+            <td>{{ contact.message|nl2br }}</td>
+        </tr>
+    </table>
+</div>

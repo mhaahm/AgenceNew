@@ -1,0 +1,48 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+
+property.index:
+    path: /biens
+    controller: App\Controller\PropertyController::index
+
+
+property.show:
+    path: /show/{id}/{slug}
+    controller: App\Controller\PropertyController::show
+    #requirements:
+        #slug: [a-z0-9\-]*}
+
+admin.property.index:
+    path: /admin
+    controller: App\Controller\Admin\AdminPropertyController::index
+
+admin.property.edit:
+    path: /admin/edit/{id}
+    controller: App\Controller\Admin\AdminPropertyController::edit
+
+admin.property.new:
+    path: /admin/new
+    controller: App\Controller\Admin\AdminPropertyController::new
+
+admin.property.delete:
+    path: /admin/delete/{id}
+    controller: App\Controller\Admin\AdminPropertyController::delete
+
+security.login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+logout:
+    path: /logout
+
+
+createUser:
+    path: createUser
+    controller: App\Controller\DefaultController:createUser
